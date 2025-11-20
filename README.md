@@ -8,4 +8,13 @@ You might wonder: “Why build another photo editor?”
 While there are many well-established open source photo editors, and of course well-known paid options like Adobe Lightroom, non of it (as far as I know) provides built-in tools to modify images down to the level of individual pixels. It is even harder to find one that does so while maintaining a simple, user-friendly GUI. 
 
 ## The Idea
-As far as I love Adobe Lightroom, it will always remain to be a paid option, important features like RAW photo editing are kept behind a paywall. If there is a state-of-the-art object segmentation model and I want to use it to process my image, I will have to wait Adobe to figure out that it is economically beneficial before they are willing to implement it. What about the default photo editing tool on IOS/MACOS? I absolutely love them for their featureset, simplicity and friendliness in terms of usability, especially the one on MACOS, but they are limited by their awful exposure adjustment algorithm and absolute zero customizability. I fully appreciate open source tools like Darktable and Rawtheraphee, but I'm too lazy to learn how to customize the GUI, so why not coding it from scratch myself?
+As far as I love Adobe Lightroom, it will always remain to be a paid option, important features like RAW photo editing are kept behind a paywall. If there is a state-of-the-art object segmentation model and I want to use it to process my image, I will have to wait Adobe to figure out that it is economically beneficial before they are willing to implement it. What about the default photo editing tool on IOS/MACOS? I absolutely love them for their featureset, simplicity and friendliness in terms of usability, especially the one on MACOS, but they are limited by their awful exposure adjustment algorithm and absolute zero customizability. I fully appreciate open source tools like Darktable and Rawtheraphee, but I'm too lazy to learn how to customize the GUI, so why not coding it from scratch myself? 
+
+**The "Mat" in MatIt was inspired by the idea of editing an image like how you do it in MATLAB!**
+
+## Aim
+- Create a photo editing tool embedded in a photo gallery/browser with clean GUI (similar to photo gallery in mobile phones).
+- Metadata viewer, basic sorting and arrangement options, and gallery preview resizer should be implemented as part of the basic intuitive featureset in the photo gallery.
+- Create a clean image editing tab (hiding advanced features behind buttons).
+- Intuition over key bindings!
+- High level image processing algorithm plugin implementation (Allows user to modify pixels in any language or method they want either through API or MATLAB-like equations).
