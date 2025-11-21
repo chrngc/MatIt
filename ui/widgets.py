@@ -45,17 +45,20 @@ class Widgets:
                 display, self.css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
 
-    def make_slider(self, minimum=0, maximum=100, step=1, value=None, orientation=Gtk.Orientation.HORIZONTAL):
+    def make_slider(self, minimum=0, maximum=100, step=1, value=None, length=None, orientation=Gtk.Orientation.HORIZONTAL):
         """Create a horizontal or vertical slider (scale)."""
         try:
             scale = Gtk.Scale.new_with_range(orientation, minimum, maximum, step)
         except AttributeError:
-            # Fallback for APIs where new_with_range isn't present
             adjustment = Gtk.Adjustment.new(value or minimum, minimum, maximum, step, step * 10, 0)
             scale = Gtk.Scale.new(orientation, adjustment)
 
         if value is not None:
             scale.set_value(value)
+
+        # if length is not None:
+        #     scale.set_size_request(length if orientation == Gtk.Orientation.HORIZONTAL else -1,
+        #                            length if orientation == Gtk.Orientation.VERTICAL else -1)
         return scale
 
     def make_checkbutton(self, label=""):
@@ -85,47 +88,6 @@ class Widgets:
         box.append(widget)
         return box
 
-    def demo_application(self, css_paths=None):
-        """Return a Gtk.Application that demonstrates the widgets.
 
-        Note: running this requires GTK4 + PyGObject to be installed in the environment.
-        """
-        if css_paths:
-            self.load_css(css_paths)
-
-        app = Gtk.Application()
-
-        def on_activate(app):
-            win = Gtk.ApplicationWindow(application=app, title="Widgets Demo")
-            vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 12)
-
-            slider = self.make_slider(0, 100, 1, value=25)
-            check = self.make_checkbutton('Enable feature')
-            entry = self.make_entry('Type something')
-
-            def on_button_clicked(button):
-                print('Entry:', entry.get_text())
-                print('Checked:', check.get_active())
-                try:
-                    print('Slider:', slider.get_value())
-                except Exception:
-                    pass
-
-            btn = self.make_button('Print values', on_button_clicked)
-
-            vbox.append(self.make_row('Slider:', slider))
-            vbox.append(self.make_row('Check:', check))
-            vbox.append(self.make_row('Text:', entry))
-            vbox.append(btn)
-
-            win.set_child(vbox)
-            win.present()
-
-        app.connect('activate', on_activate)
-        return app
-
-
-if __name__ == '__main__':
-    wf = Widgets(css_paths=['../customization/ui/widgets.css'])
-    app = wf.demo_application()
-    app.run(None)
+# `Widgets` is intended to be imported and used by other modules (for example
+# `main.py`). Do not start an application from this module when it's imported.

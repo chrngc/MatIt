@@ -1,0 +1,26 @@
+/* Gallery CSS */
+
+.thumbnail-frame {
+    background-color: #333;
+    border: 1px solid #555;
+    padding: 0px;
+    margin: 2px;
+}
+
+.thumbnail-frame:hover {
+    background-color: #444;
+    border-color: #888;
+}
+
+/* Center thumbnail content inside the frame */
+.thumbnail-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Ensure child widgets don't add extra spacing */
+.thumbnail-frame > * {
+    margin: 0;
+}

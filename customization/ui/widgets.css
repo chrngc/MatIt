@@ -1,0 +1,17 @@
+/* Demo CSS for widgets
+   Controls the visual length of the horizontal slider with the
+   `.wide-scale` class applied in `main.py`.
+*/
+
+/* Make the scale (slider) wider by default */
+.wide-scale {
+   /* prefer a flexible minimum width */
+   min-width: 100px;
+   /* limit maximum so it doesn't grow too large in wide windows */
+   width: 800px;
+   /* width: 100; */
+}
+
+/* Example vertical scale rule (if you add a vertical slider and class)
+   .vertical-scale { min-height: 300px; }
+*/
